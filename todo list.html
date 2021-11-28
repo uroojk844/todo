@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+*{font-family:'bahnschrift light';font-variant:small-caps;
+font-size:18px;}
+
+#container{
+position:relative;
+left:50%;
+top:10px;
+transform:translateX(-50%);
+border:1px solid dodgerblue;
+float:left;
+width:500px;
+box-shadow:0 4px 8px 0 gray;
+}
+
+#input,#add{
+border:0;
+padding:8px 16px;
+border-bottom:1px solid dodgerblue;
+}
+
+#add{
+background:dodgerblue;
+color:white;
+font-weight:500;
+}
+
+.btn {
+  background-color: DodgerBlue;
+  border: none; 
+  color: white; 
+  padding: 12px 16px;
+  font-size: 16px; 
+  cursor: pointer; 
+  float:right;
+}
+
+.btn:hover {
+  background-color: red;
+}
+
+
+.item{
+float:left;
+padding:10px 16px;
+}
+
+table{width:100%}
+
+@media only screen and (max-width:600px){
+#container{width:100%;top:0;}
+}
+
+</style>
+</head>
+<body>
+<div id="container">
+<div class="w3-blue w3-padding-24 w3-center w3-xxlarge">To-do List</div>
+<div class="w3-row">
+<div id="add" class="w3-col w3-blue w3-right" style="width:60px" onclick="add_item()"/>Add</div>
+<div class="w3-rest">
+<input type="text" placeholder="Add items" id="input" class="w3-input" autocomplete autofocus />
+</div>
+<table id="table"></table>
+</div>
+<script>
+var close = document.getElementsByClassName("btn");
+var i;
+
+function add_item(){
+	var x = document.getElementById('input').value;
+	if(x!=''){
+	var tab = document.getElementById('table');
+	var tr1 = document.createElement('tr');
+	var td1 = document.createElement('td');
+	var td2 = document.createElement('td');
+	var btn = document.createElement('i');
+	tr1.className='item-container';
+	td1.className='item';
+	td2.className='btn';
+	btn.className='fa fa-close';
+	td1.append(x);
+	td2.appendChild(btn);
+	tr1.appendChild(td1);
+	tr1.appendChild(td2);
+	tab.appendChild(tr1);
+	}
+	else{
+		alert("Add something!!")
+	}
+	
+	x='';
+	
+	for (i = 0; i < close.length; i++) {
+	  close[i].onclick = function() {
+		var div = this.parentElement;
+		div.style.display = "none";
+	  }
+	}	
+}
+
+</script>
+</body>
+</html>
